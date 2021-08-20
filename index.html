@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h4 align="center"></h4>
+
+<button onclick="getLocation()">Get Location</button>
+
+
+<p id="demo"></p>
+<form action="/" method="POST">
+ <label for="lattitude">lattitude</label><input type="text" id="lattitude" name="lattitude"><br>
+ <labe
+ l for="longitude">longitude</label><input type="text" id="longitude" name="longitude"><br>
+
+ <input type="button" value="Register" id="submit">
+
+</form>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  document.getElementById('lattitude').value=position.coords.latitude 
+  document.getElementById('longitude').value=position.coords.longitude;
+}
+var btn=document.getElementById('submit')
+btn.addEventListener('click',function(){
+  lattitude=document.getElementById('lattitude').value
+  longitude=document.getElementById('lattitude').value
+ if(!lattitude || !longitude){
+   alert('provide your location')
+ }
+ else{
+   alert("lattitude:"+lattitude+"  longitude:"+longitude)
+ }
+})
+</script>
+
+</body>
+</html>
